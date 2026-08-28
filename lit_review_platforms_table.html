@@ -1,0 +1,263 @@
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<style type="text/css">:root {
+            --primary: #2563eb;
+            --surface: #ffffff;
+            --background: #f8fafc;
+            --border: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            padding: 2rem;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--surface);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .header {
+            padding: 1.5rem 2rem;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--text-main);
+        }
+
+        .instruction {
+            font-size: 0.875rem;
+            color: var(--primary);
+            font-weight: 500;
+            background: #eff6ff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+
+        .legend {
+            padding: 0.9rem 2rem;
+            background: #f8fafc;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            align-items: center;
+        }
+
+        .legend b { color: var(--text-main); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 0.875rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            font-size: 0.9rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: #f8fafc;
+        }
+
+        .platform-name {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #e2e8f0;
+            color: #475569;
+            margin-right: 0.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .tag.excel { background: #dcfce7; color: #166534; }
+        .tag.warn { background: #ffedd5; color: #9a3412; }
+
+        /* AI Inference Level tags — ordered low to high interpretive distance from source */
+        .tag.inf-none { background: #dcfce7; color: #166534; }   /* non-generative / visual only */
+        .tag.inf-low  { background: #dbeafe; color: #1d4ed8; }   /* extractive, source-traceable */
+        .tag.inf-mid  { background: #fef9c3; color: #854d0e; }   /* structured synthesis */
+        .tag.inf-high { background: #fee2e2; color: #b91c1c; }   /* abstractive / generated verdict */
+
+        .inf-cell p {
+            margin: 0.4rem 0 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Editable cell styling */
+        .editable-cell {
+            background-color: #fffbeb;
+            border: 1px dashed #fcd34d;
+            border-radius: 6px;
+            min-width: 200px;
+            cursor: text;
+            transition: all 0.2s ease;
+        }
+
+        .editable-cell:focus {
+            outline: none;
+            border-color: #fbbf24;
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+        }
+
+        .editable-cell:empty:before {
+            content: "Click to type your notes here...";
+            color: #9ca3af;
+            font-style: italic;
+        }
+</style>
+<div class="container">
+<div class="header">
+<h2>AI Literature Review Platforms for Gap Analysis</h2>
+
+<div class="instruction">✏️ The &quot;My Comments&quot; column is editable. Click to add your notes.</div>
+</div>
+
+<div class="legend">
+<span><b>AI Inference Level</b> — how much interpretive distance sits between the source text and what you see:</span>
+<span><span class="tag inf-none">Non-generative</span> shows structure only, no AI claims</span>
+<span><span class="tag inf-low">Extractive</span> traceable to source</span>
+<span><span class="tag inf-mid">Structured synthesis</span> organized, still checkable</span>
+<span><span class="tag inf-high">Abstractive</span> generated verdict, verify before trusting</span>
+</div>
+
+<table>
+	<thead>
+		<tr>
+			<th>Platform</th>
+			<th>Core Workflow</th>
+			<th>Extraction &amp; Gap Features</th>
+			<th>AI Inference Level</th>
+			<th>Free Tier Reality for Students</th>
+			<th>My Comments / Verdict</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+			<div class="platform-name">Elicit</div>
+			<span class="tag excel">Best for Data Matrices</span></td>
+			<td>Systematic extraction of study parameters into a structured matrix.</td>
+			<td>Custom columns for methodology, population, settings, and limitations. Highly reliable extraction directly from PDFs.</td>
+			<td class="inf-cell"><span class="tag inf-low">Extractive</span>
+			<p>Cell values are pulled directly from the PDF and traceable back to their location in the source — low risk of ungrounded claims.</p></td>
+			<td><span class="tag warn">Strict Limits:</span> Generous one-time credits, but heavy extraction burns through them fast. Paid plans are steep for casual use.</td>
+			<td class="editable-cell" contenteditable="true">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			<div class="platform-name">SciSpace</div>
+			<span class="tag excel">Best for PDF Interrogation</span></td>
+			<td>Exploratory search across 280M+ papers and deep conversational PDF analysis.</td>
+			<td>Custom extraction tables similar to Elicit, plus line-by-line copilot explanations of methodology and equations.</td>
+			<td class="inf-cell"><span class="tag inf-low">Extractive</span> + <span class="tag inf-mid">light synthesis</span>
+			<p>Table extraction stays traceable, but the copilot's line-by-line explanations add a layer of generated interpretation — check those against the original text.</p></td>
+			<td><span class="tag excel">Generous, very</span>&nbsp;robust free tier for reading and extraction; highly accessible for budget-conscious students.</td>
+			<td class="editable-cell" contenteditable="true">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			<div class="platform-name">Paperguide</div>
+			<span class="tag excel">Best All-in-One</span></td>
+			<td>Bridges the gap between extracting paper data and actually writing the literature review.</td>
+			<td>Systematic column extraction, integrated citation manager, and an AI drafting assistant all in the same workspace.</td>
+			<td class="inf-cell"><span class="tag inf-mid">Structured synthesis</span>
+			<p>Extraction itself is fine, but the built-in AI drafting assistant can generate review prose directly — the highest-risk feature here for skipping your own inductive reasoning.</p></td>
+			<td><span class="tag excel">Generous:</span> Offers more free extraction columns than Elicit, plus daily credits for drafting and AI interaction.</td>
+			<td class="editable-cell" contenteditable="true">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			<div class="platform-name">Consensus</div>
+			<span class="tag">Best for Claim Verification</span></td>
+			<td>Rapidly checks the scientific consensus on specific yes/no research questions.</td>
+			<td>Synthesizes claims across millions of papers to instantly highlight whether the literature is mixed or leaning in a certain direction.</td>
+			<td class="inf-cell"><span class="tag inf-high">Abstractive</span>
+			<p>Delivers a generated yes/no verdict across papers up front — easiest tool on this list to accept uncritically without opening a single source.</p></td>
+			<td><span class="tag">Moderate</span> Free tier includes a set number of deep AI syntheses per month.</td>
+			<td class="editable-cell" contenteditable="true">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			<div class="platform-name">ResearchRabbit</div>
+			<span class="tag excel">Best for Visual Mapping</span></td>
+			<td>Visualizing citation networks to find hidden or isolated subfields.</td>
+			<td>Does not extract text tables, but builds interactive graphs showing the temporal evolution of citations to spot missing links.</td>
+			<td class="inf-cell"><span class="tag inf-none">Non-generative</span>
+			<p>No prose synthesis at all. The tool shows structure; you're the one who has to notice and name the gap — good for building the skill, not just the answer.</p></td>
+			<td><span class="tag excel">Completely Free</span> Free for academic use.</td>
+			<td class="editable-cell" contenteditable="true">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			<div class="platform-name">Litmaps</div>
+			<span class="tag excel">Best for Visual Mapping</span></td>
+			<td>Tracking how an idea spreads through the literature over time.</td>
+			<td>Overlays citation networks on a chronological timeline, making it obvious when a research topic went dormant.</td>
+			<td class="inf-cell"><span class="tag inf-none">Non-generative</span>
+			<p>Dormancy is visually implied on the timeline, never asserted as an AI claim — you still draw the conclusion yourself.</p></td>
+			<td><span class="tag excel">Generous</span> Excellent free tier for basic mapping and discovery.</td>
+			<td class="editable-cell" contenteditable="true">&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<script>
+    // Notes persist in memory for this session only (browser storage APIs
+    // are not available in this environment). Copy this file to your own
+    // hosting if you want notes to survive a page refresh via localStorage.
+    const noteStore = {};
+    document.querySelectorAll('.editable-cell').forEach((cell, index) => {
+        if (noteStore[index]) cell.innerHTML = noteStore[index];
+        cell.addEventListener('input', function() {
+            noteStore[index] = this.innerHTML;
+        });
+    });
+</script>
