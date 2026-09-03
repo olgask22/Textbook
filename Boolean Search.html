@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boolean Search Query Builder</title>
+<style>
+  body {
+    margin: 0;
+    background: #f8fafc;
+  }
+  .search-builder-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 24px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  .intro {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    color: #334155;
+    margin: 0 0 20px;
+  }
+  .controls-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: end;
+    margin-bottom: 24px;
+  }
+  .filter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #cbd5e1;
+  }
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px;
+  }
+  input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  .venn-container {
+    text-align: center;
+    margin: 32px 0;
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+  .result-box {
+    background: #1e293b;
+    color: #4ade80;
+    padding: 16px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 16px;
+    word-break: break-all;
+  }
+  .result-label {
+    color: #94a3b8;
+    font-size: 12px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<div class="search-builder-container">
+
+  <p class="intro">Using this tool to build a query relying on Boolean operators and a few filters</p>
+
+  <!-- Concept Inputs -->
+  <div class="controls-grid">
+    <div>
+      <label for="conceptA">Concept A</label>
+      <input id="conceptA" oninput="updateSearch()" placeholder="e.g., Social Media" type="text">
+    </div>
+    <div>
+      <label for="operator">Operator</label>
+      <select id="operator" onchange="updateSearch()">
+        <option value="AND">AND (Narrow)</option>
+        <option value="OR">OR (Broaden)</option>
+        <option value="NOT">NOT (Exclude)</option>
+      </select>
+    </div>
+    <div>
+      <label for="conceptB">Concept B</label>
+      <input id="conceptB" oninput="updateSearch()" placeholder="e.g., Mental Health" type="text">
+    </div>
+  </div>
+
+  <!-- Additional Filters -->
+  <div class="filter-grid">
+    <div>
+      <label for="pubType">Type of Publication</label>
+      <select id="pubType" onchange="updateSearch()">
+        <option value="">All Types</option>
+        <option value="Peer Reviewed">Peer-Reviewed Journals</option>
+        <option value="News">Newspapers &amp; Magazines</option>
+        <option value="Books">Books &amp; Book Chapters</option>
+      </select>
+    </div>
+    <div>
+      <label for="pubTime">Time of Publication</label>
+      <select id="pubTime" onchange="updateSearch()">
+        <option value="">All Time</option>
+        <option value="Last 5 Years">Last 5 Years</option>
+        <option value="Last 10 Years">Last 10 Years</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Venn Diagram Visualizer -->
+  <div class="venn-container">
+    <svg height="200" viewBox="0 0 400 200" width="100%">
+      <defs>
+        <clipPath id="clipB">
+          <circle cx="240" cy="100" r="80"></circle>
+        </clipPath>
+        <mask id="maskNotB">
+          <rect fill="white" height="200" width="400"></rect>
+          <circle cx="240" cy="100" fill="black" r="80"></circle>
+        </mask>
+      </defs>
+
+      <!-- Base Outlines -->
+      <circle cx="160" cy="100" fill="none" r="80" stroke="#94a3b8" stroke-dasharray="4" stroke-width="2"></circle>
+      <circle cx="240" cy="100" fill="none" r="80" stroke="#94a3b8" stroke-dasharray="4" stroke-width="2"></circle>
+
+      <!-- Dynamic Highlights based on Boolean Logic -->
+      <g id="venn-or" style="display:none; fill: #3b82f6; opacity: 0.3;">
+        <circle cx="160" cy="100" r="80"></circle>
+        <circle cx="240" cy="100" r="80"></circle>
+      </g>
+      <g id="venn-and" style="display:block; fill: #3b82f6; opacity: 0.5;">
+        <circle clip-path="url(#clipB)" cx="160" cy="100" r="80"></circle>
+      </g>
+      <g id="venn-not" style="display:none; fill: #3b82f6; opacity: 0.4;">
+        <circle cx="160" cy="100" mask="url(#maskNotB)" r="80"></circle>
+      </g>
+
+      <!-- Labels -->
+      <text fill="#334155" font-family="sans-serif" font-size="14" font-weight="bold" id="labelA" text-anchor="middle" x="120" y="105">Concept A</text>
+      <text fill="#334155" font-family="sans-serif" font-size="14" font-weight="bold" id="labelB" text-anchor="middle" x="280" y="105">Concept B</text>
+    </svg>
+  </div>
+
+  <!-- Final Database String Output -->
+  <div class="result-box">
+    <div class="result-label">Generated Database Query:</div>
+    <div id="search-string-output">("Concept A" AND "Concept B")</div>
+  </div>
+
+</div>
+
+<script>
+  function updateSearch() {
+    // 1. Get Values
+    const valA = document.getElementById('conceptA').value.trim() || 'Concept A';
+    const valB = document.getElementById('conceptB').value.trim() || 'Concept B';
+    const operator = document.getElementById('operator').value;
+    const pubType = document.getElementById('pubType').value;
+    const pubTime = document.getElementById('pubTime').value;
+
+    // 2. Update SVG Venn Diagram
+    document.getElementById('venn-and').style.display = 'none';
+    document.getElementById('venn-or').style.display = 'none';
+    document.getElementById('venn-not').style.display = 'none';
+
+    if (operator === 'AND') document.getElementById('venn-and').style.display = 'block';
+    if (operator === 'OR') document.getElementById('venn-or').style.display = 'block';
+    if (operator === 'NOT') document.getElementById('venn-not').style.display = 'block';
+
+    // 3. Update Text Labels in SVG (truncate if too long)
+    const formatLabel = (str) => str.length > 12 ? str.substring(0, 10) + '...' : str;
+    document.getElementById('labelA').textContent = formatLabel(valA);
+    document.getElementById('labelB').textContent = formatLabel(valB);
+
+    // 4. Build the Database Search String
+    // Assuming quotes around terms to enforce exact phrases in academic databases
+    let query = `("${valA}" ${operator} "${valB}")`;
+
+    if (pubType) {
+      query += ` AND (Type: "${pubType}")`;
+    }
+
+    if (pubTime) {
+      // Translate the dropdown into a mock database date limiter
+      const currentYear = new Date().getFullYear();
+      if (pubTime === "Last 5 Years") {
+        query += ` AND (Date: >${currentYear - 5})`;
+      } else if (pubTime === "Last 10 Years") {
+        query += ` AND (Date: >${currentYear - 10})`;
+      }
+    }
+
+    // 5. Output the String
+    document.getElementById('search-string-output').textContent = query;
+  }
+
+  // Initialize the visualizer on first load
+  updateSearch();
+</script>
+
+</body>
+</html>
