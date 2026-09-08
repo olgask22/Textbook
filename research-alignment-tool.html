@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Design Alignment Matrix</title>
+<style>
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #eef0f3;
+    margin: 0;
+    padding: 40px 16px;
+  }
+</style>
+</head>
+<body>
+
+<div id="research-alignment-tool" style="font-family: system-ui, -apple-system, sans-serif; max-width: 700px; margin: 0 auto; padding: 24px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+    <h3 style="margin-top: 0; color: #111827; font-size: 1.25rem;">Research Design Alignment Matrix</h3>
+    <p style="color: #4b5563; font-size: 0.95rem; margin-bottom: 20px;">Select your worldview and research goal to see how they impact your literature review and framework.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px;">
+        <div>
+            <label for="paradigm" style="display: block; font-weight: 600; margin-bottom: 6px; color: #374151;">1. What is your Research Paradigm (Worldview)?</label>
+            <select id="paradigm" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem;">
+                <option value="">-- Select Paradigm --</option>
+                <option value="positivism">Positivism (Looking for objective, measurable truth)</option>
+                <option value="constructivism">Constructivism (Looking to understand subjective, lived experiences)</option>
+                <option value="pragmatism">Pragmatism (Looking for actionable solutions to practical problems)</option>
+            </select>
+        </div>
+        <div>
+            <label for="goal" style="display: block; font-weight: 600; margin-bottom: 6px; color: #374151;">2. What is your Primary Research Goal?</label>
+            <select id="goal" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem;">
+                <option value="">-- Select Goal --</option>
+                <option value="test">Test a specific theory or hypothesis</option>
+                <option value="explore">Explore a complex phenomenon or experience</option>
+                <option value="solve">Solve a specific, localized problem</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="results-area" style="display: none; padding: 20px; border-radius: 8px; background: #ffffff; border: 1px solid #e5e7eb;">
+        <div id="warning-message" style="display: none; background: #fef2f2; border-left: 4px solid #ef4444; padding: 12px; color: #991b1b; margin-bottom: 16px; font-size: 0.9rem; font-weight: 500;">
+            <!-- Warning populates here -->
+        </div>
+        <h4 style="margin: 0 0 12px 0; color: #1f2937; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px;">Your Aligned Research Design</h4>
+
+        <div style="margin-bottom: 12px;">
+            <strong style="color: #4b5563;">Methodology:</strong>
+            <span id="out-methodology" style="color: #111827; font-weight: 500;"></span>
+        </div>
+
+        <div style="margin-bottom: 12px;">
+            <strong style="color: #4b5563;">Literature Review Focus:</strong>
+            <p id="out-lit" style="margin: 4px 0 0 0; color: #374151; font-size: 0.95rem;"></p>
+        </div>
+
+        <div>
+            <strong style="color: #4b5563;">Conceptual Framework Structure:</strong>
+            <p id="out-framework" style="margin: 4px 0 0 0; color: #374151; font-size: 0.95rem;"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const paradigmSelect = document.getElementById('paradigm');
+    const goalSelect = document.getElementById('goal');
+    const resultsArea = document.getElementById('results-area');
+    const warningMessage = document.getElementById('warning-message');
+
+    const outMethod = document.getElementById('out-methodology');
+    const outLit = document.getElementById('out-lit');
+    const outFrame = document.getElementById('out-framework');
+
+    function updateMatrix() {
+        const p = paradigmSelect.value;
+        const g = goalSelect.value;
+
+        if (!p || !g) {
+            resultsArea.style.display = 'none';
+            return;
+        }
+
+        resultsArea.style.display = 'block';
+        warningMessage.style.display = 'none';
+
+        let isAligned = false;
+
+        if (p === 'positivism' && g === 'test') {
+            isAligned = true;
+            outMethod.innerText = "Quantitative";
+            outLit.innerText = "Highly focused. You must search for specific variables, previously validated instruments, and middle-range theories that can be tested.";
+            outFrame.innerText = "Rigid and Deductive. Built early in the process to strictly define what will be measured and exactly how variables relate.";
+        }
+        else if (p === 'constructivism' && g === 'explore') {
+            isAligned = true;
+            outMethod.innerText = "Qualitative";
+            outLit.innerText = "Broad and contextual. You are looking for themes, marginalized voices, and sensitizing concepts that guide your inquiry without restricting it.";
+            outFrame.innerText = "Emergent and Inductive. Starts loosely as a conceptual map, but the true framework is often built as an output of the data collection.";
+        }
+        else if (p === 'pragmatism' && g === 'solve') {
+            isAligned = true;
+            outMethod.innerText = "Mixed Methods or Action Research";
+            outLit.innerText = "Problem-centric. You need literature that provides both statistical context for the problem's scope, and qualitative context for why it persists.";
+            outFrame.innerText = "Practical and Iterative. Focuses on the inputs, processes, and outputs necessary to evaluate an intervention.";
+        }
+        else {
+            // Mismatch condition
+            warningMessage.style.display = 'block';
+            warningMessage.innerHTML = "<strong>Methodological Friction Detected:</strong> Your worldview and goal do not naturally align. Trying to force these together often results in a 'Frankenstein' concept paper.";
+
+            if (g === 'test') {
+                outMethod.innerText = "Quantitative (Attempted)";
+                outLit.innerText = "You want to test a theory, but your chosen worldview isn't suited for objective measurement. You will struggle to find specific variables in qualitative literature.";
+                outFrame.innerText = "You risk creating a rigid quantitative framework for a study that wants to be subjective.";
+            } else if (g === 'explore') {
+                outMethod.innerText = "Qualitative (Attempted)";
+                outLit.innerText = "You want to explore an experience, but your worldview is looking for objective facts. Your literature review may end up feeling like a list of unrelated statistics.";
+                outFrame.innerText = "You risk trying to force emergent qualitative data into a rigid, pre-defined box.";
+            } else {
+                outMethod.innerText = "Mixed Methods (Attempted)";
+                outLit.innerText = "You are trying to solve a practical problem using a rigid worldview that may not allow for iterative, localized solutions.";
+                outFrame.innerText = "Your framework may struggle to adapt to the realities of solving a real-world problem.";
+            }
+        }
+    }
+
+    paradigmSelect.addEventListener('change', updateMatrix);
+    goalSelect.addEventListener('change', updateMatrix);
+});
+</script>
+
+</body>
+</html>
