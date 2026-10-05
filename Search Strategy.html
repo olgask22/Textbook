@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Integrated Research Search Strategy&lt;/title&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Tailwind CSS (for styling) --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Lucide Icons (for the icons) --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://unpkg.com/lucide@latest"&gt;&lt;/script&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Smooth transition for view toggling */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.fade-in {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>animation: fadeIn 0.5s ease-in-out;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@keyframes fadeIn {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>from { opacity: 0; transform: translateY(10px); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>to { opacity: 1; transform: translateY(0); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Custom scrollbar for better embedding experience */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>::-webkit-scrollbar {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 8px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>::-webkit-scrollbar-track {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: #f1f1f1;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>::-webkit-scrollbar-thumb {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: #cbd5e1;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 4px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>::-webkit-scrollbar-thumb:hover {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: #94a3b8;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body class="bg-gray-50 text-slate-800 font-sans antialiased"&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Main Container --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="app-container" class="min-h-screen p-4 md:p-8"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;!-- Header --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-6xl mx-auto mb-8 text-center"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>Integrated Research Search Strategy</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p class="text-gray-600 max-w-2xl mx-auto mb-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>A unified protocol combining the traditional literature review design with a comprehensive search strategy framework.</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- View Toggle Buttons --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="inline-flex bg-white p-1 rounded-lg border border-gray-200 shadow-sm"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button onclick="switchView('pyramid')" id="btn-pyramid" class="px-4 py-2 rounded-md text-sm font-medium transition-all bg-slate-800 text-white shadow"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>Pyramid Framework</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button onclick="switchView('process')" id="btn-process" class="px-4 py-2 rounded-md text-sm font-medium transition-all text-gray-500 hover:bg-gray-100"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>4-Step Process Flow</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;!-- Content Area --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-6xl mx-auto"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- Pyramid View Container --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div id="pyramid-view" class="fade-in block"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="flex flex-col items-center gap-4 py-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="relative w-full max-w-4xl flex flex-col items-center" id="pyramid-content"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;!-- Connecting Line --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="absolute top-0 bottom-0 w-1 bg-gray-200 z-0 hidden md:block"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;!-- Javascript will inject cards here --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- Process View Container --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div id="process-view" class="fade-in hidden"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-8" id="process-content"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;!-- Javascript will inject cards here --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;!-- Footer / Legend --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-6xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 rounded-xl border border-gray-200 shadow-sm"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;i data-lucide="book-open" class="w-5 h-5 text-indigo-600"&gt;&lt;/i&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>About this Protocol</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p class="text-sm text-gray-600 leading-relaxed"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>This graphic integrates the "Protocol for a Traditional Literature Review Design" with the "Why, What, How, Where" search strategy. It emphasizes that a successful review begins with positionality (Why) before moving to criteria (What), sources (Where), and finally execution (How).</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;i data-lucide="map" class="w-5 h-5 text-indigo-600"&gt;&lt;/i&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>Key Outcomes</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;ul class="text-sm text-gray-600 space-y-1"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li class="flex items-start gap-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0"&gt;&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>Aligned research questions and design</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li class="flex items-start gap-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0"&gt;&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>Comprehensive evidence collection (2005-2024)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li class="flex items-start gap-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0"&gt;&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>Structured thematic and argumentative synthesis</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Logic Script --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// Data Configuration</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const sections = [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>id: 'why',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>title: 'WHY?',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>subtitle: 'Purpose &amp; Foundation',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>icon: 'help-circle',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>color: 'bg-blue-600',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>lightColor: 'bg-blue-50',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>borderColor: 'border-blue-200',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>textColor: 'text-blue-800',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>summary: "Defining the researcher's stance and review goals.",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>elements: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ label: "Positionality", value: "Learner, Researcher, Practitioner" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ label: "Purpose", value: "Gap analysis, Framing a study, Collecting evidence" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ label: "Question", value: "Structured &amp; aligned with design" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>id: 'what',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>title: 'WHAT?',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>subtitle: 'Scope &amp; Criteria',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>icon: 'filter',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>color: 'bg-teal-600',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>lightColor: 'bg-teal-50',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>borderColor: 'border-teal-200',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>textColor: 'text-teal-800',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>summary: "Determining inclusion criteria and evidence types.",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>elements: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ label: "Reference Period", value: "2005 - 2024" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ label: "Evidence Types", value: "Latest reports (&gt;2015), Seminal works, Grey lit" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ label: "Key Factors", value: "Concepts, Population, Setting" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ label: "Scope", value: "Selective or Comprehensive" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>id: 'where',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>title: 'WHERE?',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>subtitle: 'Sources &amp; Locations',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>icon: 'database',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>color: 'bg-amber-600',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>lightColor: 'bg-amber-50',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>borderColor: 'border-amber-200',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>textColor: 'text-amber-800',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>summary: "Identifying the repositories of knowledge.",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>elements: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ label: "Primary Sources", value: "Databases, Indexes, Collections" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ label: "Channels", value: "Academic Journals, Open Access Repositories" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ label: "Expansions", value: "Meta-indexes for additional literature" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>id: 'how',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>title: 'HOW?',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>subtitle: 'Strategy &amp; Analysis',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>icon: 'settings',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>color: 'bg-purple-600',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>lightColor: 'bg-purple-50',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>borderColor: 'border-purple-200',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>textColor: 'text-purple-800',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>summary: "Execution of search and synthesis of findings.",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>elements: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ label: "Search Techniques", value: "Thesaurus, Keywords, Citation Chaining" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ label: "Advanced Tools", value: "AI semantic / NLP search" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ label: "Analysis", value: "Literature mapping, Thematic analysis" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ label: "Structure", value: "Funnel, Parallel, or Thematic outlines" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- View Switching Logic ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function switchView(view) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const pyramidView = document.getElementById('pyramid-view');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const processView = document.getElementById('process-view');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const btnPyramid = document.getElementById('btn-pyramid');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const btnProcess = document.getElementById('btn-process');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (view === 'pyramid') {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>pyramidView.classList.remove('hidden');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>processView.classList.add('hidden');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Update Button Styles</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>btnPyramid.className = "px-4 py-2 rounded-md text-sm font-medium transition-all bg-slate-800 text-white shadow";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>btnProcess.className = "px-4 py-2 rounded-md text-sm font-medium transition-all text-gray-500 hover:bg-gray-100";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>pyramidView.classList.add('hidden');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>processView.classList.remove('hidden');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Update Button Styles</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>btnProcess.className = "px-4 py-2 rounded-md text-sm font-medium transition-all bg-slate-800 text-white shadow";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>btnPyramid.className = "px-4 py-2 rounded-md text-sm font-medium transition-all text-gray-500 hover:bg-gray-100";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- Render Functions ---</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function createElementsList(elements) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>return elements.map((el, i) =&gt; `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="text-sm border-b border-gray-100 pb-1 last:border-0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span class="font-semibold text-gray-700"&gt;${el.label}:&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span class="text-gray-600"&gt;${el.value}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>`).join('');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function createProcessElementsList(elements) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>return elements.map((el, i) =&gt; `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;li class="text-xs"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="font-bold text-gray-700 mb-0.5"&gt;${el.label}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="text-gray-500 leading-snug"&gt;${el.value}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>`).join('');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function renderPyramid() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const container = document.getElementById('pyramid-content');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Reverse order for pyramid (Why at bottom)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Original: Why, What, Where, How</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Pyramid: How (top), Where, What, Why (base)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const pyramidOrder = [...sections].reverse();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Keep the line</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let html = '&lt;div class="absolute top-0 bottom-0 w-1 bg-gray-200 z-0 hidden md:block"&gt;&lt;/div&gt;';</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>pyramidOrder.forEach((section, index) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Width calculation</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>let widthClass = 'md:w-11/12'; // Default widest</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (index === 0) widthClass = 'md:w-5/12'; // Top</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (index === 1) widthClass = 'md:w-7/12';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (index === 2) widthClass = 'md:w-9/12';</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>html += `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="relative z-10 w-full ${widthClass} mb-4 transition-all duration-500"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-white rounded-xl shadow-md overflow-hidden border-l-8 ${section.borderColor} hover:shadow-lg transition-shadow"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="p-5 md:p-6 flex flex-col md:flex-row gap-6 items-start md:items-center"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;!-- Icon --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div class="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full ${section.lightColor} ${section.textColor}"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;i data-lucide="${section.icon}" class="w-8 h-8"&gt;&lt;/i&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;!-- Content --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div class="flex-grow w-full"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div class="flex items-center gap-3 mb-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;h2 class="text-2xl font-bold ${section.textColor}"&gt;${section.title}&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;span class="text-sm font-medium text-gray-400 uppercase tracking-wide"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                            </span>${section.subtitle}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;p class="text-gray-600 mb-4 font-medium italic"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>${section.summary}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>${createElementsList(section.elements)}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;!-- Footer Stripe --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="h-2 w-full ${section.color} opacity-20"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>container.innerHTML = html;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function renderProcess() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const container = document.getElementById('process-content');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let html = '';</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>sections.forEach((section, index) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Arrow Logic</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const showArrow = index &lt; sections.length - 1;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const arrowHtml = showArrow ? `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="hidden lg:block absolute top-12 -right-3 z-10 text-gray-300"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;path d="M5 12h14" /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;path d="m12 5 7 7-7 7" /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;` : '';</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>html += `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="relative group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>${arrowHtml}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="h-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;!-- Number Badge --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="absolute top-4 right-4 text-6xl font-black text-gray-50 opacity-50 z-0 select-none"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>${index + 1}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;!-- Header --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="p-6 ${section.lightColor} relative z-10 border-b ${section.borderColor}"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div class="w-12 h-12 rounded-lg bg-white shadow-sm flex items-center justify-center mb-4 ${section.textColor}"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;i data-lucide="${section.icon}" class="w-6 h-6"&gt;&lt;/i&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h2 class="text-xl font-bold ${section.textColor}"&gt;${section.title}&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm font-medium text-gray-600 opacity-80"&gt;${section.subtitle}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;!-- Body --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="p-6 flex-grow relative z-10"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-gray-600 mb-6 italic border-l-2 pl-3 border-gray-200"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>${section.summary}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;ul class="space-y-3"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>${createProcessElementsList(section.elements)}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;!-- Footer Stripe --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="h-1.5 w-full ${section.color}"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>container.innerHTML = html;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// Initialize</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>renderPyramid();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>renderProcess();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>lucide.createIcons();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
