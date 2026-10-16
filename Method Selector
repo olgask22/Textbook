@@ -1,0 +1,135 @@
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<style type="text/css">body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7f6;
+        color: #333;
+        line-height: 1.6;
+        padding: 40px 20px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .header img {
+        max-width: 150px;
+        margin-bottom: 15px;
+    }
+    .card {
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .question {
+        margin-bottom: 25px;
+    }
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 10px;
+        color: #2c3e50;
+    }
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    button {
+        background-color: #0056b3;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        transition: background 0.3s;
+    }
+    button:hover {
+        background-color: #004494;
+    }
+    #resultArea {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: #e9ecef;
+        border-left: 5px solid #0056b3;
+        border-radius: 4px;
+        display: none;
+    }
+    #resultTitle {
+        margin-top: 0;
+        color: #0056b3;
+    }
+</style>
+<div class="header">
+<h1>Review Method Selector</h1>
+
+<p>Answer the four questions below to find the most appropriate evidence synthesis method for your project.</p>
+</div>
+
+<div class="card">
+<div class="question"><label for="q1">1. What is your primary goal for this literature search?</label> <select id="q1"><option value="">-- Select an option --</option><option value="narrative">I want to get a broad overview and learn about a new topic.</option><option value="scoping">I want to map out existing research and find knowledge gaps.</option><option value="systematic">I want to answer a very specific, narrowly defined research question.</option> </select></div>
+
+<div class="question"><label for="q2">2. What exactly are you trying to evaluate or understand?</label> <select id="q2"><option value="">-- Select an option --</option><option value="systematic">How well a specific intervention or treatment works.</option><option value="realist">How and why something works, and in what contexts.</option><option value="qualitative">People&#39;s lived experiences, attitudes, or behaviors.</option><option value="bibliometric">Publication trends and how a field has developed.</option> </select></div>
+
+<div class="question"><label for="q3">3. What do you want your final paper or output to look like?</label> <select id="q3"><option value="">-- Select an option --</option><option value="systematic">A statistical summary combining data from multiple studies.</option><option value="scoping">A visual map showing where evidence exists and where it is missing.</option><option value="integrative">A structured essay combining numerical data and thematic ideas.</option><option value="qualitative">A thematic summary of text-based data and narratives.</option> </select></div>
+
+<div class="question"><label for="q4">4. What kind of evidence or data will you primarily rely on?</label> <select id="q4"><option value="">-- Select an option --</option><option value="systematic">Mostly quantitative data with measurable variables.</option><option value="qualitative">Mostly qualitative data (e.g., ethnographies, interviews).</option><option value="integrative">A mix of both qualitative and quantitative data.</option><option value="bibliometric">Citation networks and metadata (e.g., OpenAlex, Semantic Scholar).</option> </select></div>
+<button onclick="calculateResult()">Get Recommendation</button>
+
+<div id="resultArea">
+<h2 id="resultTitle">&nbsp;</h2>
+
+<p id="resultDesc">&nbsp;</p>
+</div>
+</div>
+<script>
+function calculateResult() {
+    const q1 = document.getElementById('q1').value;
+    const q2 = document.getElementById('q2').value;
+    const q3 = document.getElementById('q3').value;
+    const q4 = document.getElementById('q4').value;
+    
+    const resultArea = document.getElementById('resultArea');
+    const resultTitle = document.getElementById('resultTitle');
+    const resultDesc = document.getElementById('resultDesc');
+
+    if (!q1 || !q2 || !q3 || !q4) {
+        alert("Please answer all four questions to get a recommendation.");
+        return;
+    }
+
+    // A simplified logic engine prioritizing the most restrictive/specific methodologies first
+    let recommendation = "Narrative Review";
+    let description = "Based on your selections, a traditional narrative review is a great starting point to synthesize the literature and provide a broad overview of the topic.";
+
+    if (q1 === 'systematic' || q2 === 'systematic' || q3 === 'systematic') {
+        recommendation = "Systematic Review / Meta-Analysis";
+        description = "Your goal is highly focused on answering a specific question or evaluating an intervention. This requires a rigorous, reproducible search strategy to minimize bias.";
+    } else if (q1 === 'scoping' || q3 === 'scoping') {
+        recommendation = "Scoping Review";
+        description = "Because you want to map existing research and identify gaps, a scoping review will allow you to systematically chart the available evidence without evaluating its quality.";
+    } else if (q2 === 'qualitative' || q4 === 'qualitative' || q3 === 'qualitative') {
+        recommendation = "Qualitative Evidence Synthesis";
+        description = "Your focus on lived experiences and textual data points toward a qualitative synthesis, which focuses on generating themes rather than statistical effect sizes.";
+    } else if (q2 === 'realist') {
+        recommendation = "Realist Review";
+        description = "Since you are investigating *how* and *why* complex interventions work in specific contexts, a realist review framework is most appropriate.";
+    } else if (q2 === 'bibliometric' || q4 === 'bibliometric') {
+        recommendation = "Bibliometric Review";
+        description = "Your focus on citation networks and publication trends indicates a bibliometric review, which maps the metadata of a scholarly field.";
+    } else if (q3 === 'integrative' || q4 === 'integrative') {
+        recommendation = "Integrative Review";
+        description = "Because you are synthesizing diverse data types (both quantitative and qualitative), an integrative review methodology will allow you to combine these streams comprehensively.";
+    }
+
+    resultTitle.innerText = "Recommendation: " + recommendation;
+    resultDesc.innerText = description;
+    resultArea.style.display = "block";
+}
+</script>
