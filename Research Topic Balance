@@ -1,0 +1,236 @@
+<div class="research-balancer-wrapper">
+    <h2>The Research Topic Balancer</h2>
+    <p>Adjust the factors below to see if your research topic is grounded, rigorous, and achievable.</p>
+
+    <div class="balancer-container">
+        <div class="seesaw-visual-area">
+            <div class="seesaw-stage">
+                <div id="seesaw-plank" class="seesaw-plank">
+                    <span class="left-weight-label">Literature</span>
+                    <span class="right-weight-label">Practice</span>
+                </div>
+                <div class="seesaw-fulcrum"></div>
+            </div>
+            <div id="balancer-feedback" class="feedback-box state-balanced">
+                <strong>Status: Perfectly Balanced</strong><br>
+                <span>Move the sliders below to evaluate your topic.</span>
+            </div>
+        </div>
+
+        <hr class="balancer-divider">
+
+        <div class="sliders-grid">
+            <div class="slider-group-box literature-group">
+                <h3>1. Literature (Rigor)</h3>
+                <label>Access to Resources: <span id="val-access-res">3</span>
+                    <input type="range" id="slide-access-res" min="1" max="5" value="3" step="0.5" oninput="updateBalancer()">
+                </label>
+                <label>Knowledge/Theory: <span id="val-knowledge">3</span>
+                    <input type="range" id="slide-knowledge" min="1" max="5" value="3" step="0.5" oninput="updateBalancer()">
+                </label>
+                <label>The Knowledge Gap: <span id="val-gap">3</span>
+                    <input type="range" id="slide-gap" min="1" max="5" value="3" step="0.5" oninput="updateBalancer()">
+                </label>
+            </div>
+
+            <div class="slider-group-box practice-group">
+                <h3>2. Practice (Relevance)</h3>
+                <label>The Practical Problem: <span id="val-problem">3</span>
+                    <input type="range" id="slide-problem" min="1" max="5" value="3" step="0.5" oninput="updateBalancer()">
+                </label>
+                <label>Access to Primary Data: <span id="val-data">3</span>
+                    <input type="range" id="slide-data" min="1" max="5" value="3" step="0.5" oninput="updateBalancer()">
+                </label>
+                <label>Societal/Practical Needs: <span id="val-needs">3</span>
+                    <input type="range" id="slide-needs" min="1" max="5" value="3" step="0.5" oninput="updateBalancer()">
+                </label>
+            </div>
+        </div>
+
+        <div class="slider-group-box researcher-group">
+            <h3>3. Researcher Capacity (The Foundation)</h3>
+            <div class="researcher-sliders">
+                <label>Interest & Passion: <span id="val-interest">3</span>
+                    <input type="range" id="slide-interest" min="1" max="5" value="3" step="0.5" oninput="updateBalancer()">
+                </label>
+                <label>Available Time: <span id="val-time">3</span>
+                    <input type="range" id="slide-time" min="1" max="5" value="3" step="0.5" oninput="updateBalancer()">
+                </label>
+                <label>Required Skills: <span id="val-skills">3</span>
+                    <input type="range" id="slide-skills" min="1" max="5" value="3" step="0.5" oninput="updateBalancer()">
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* CSS Reset scoping to avoid ruining LibGuide/WP global styles */
+.research-balancer-wrapper {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 850px;
+    margin: 20px auto;
+    background: #fdfdfd;
+    padding: 25px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+.research-balancer-wrapper h2 { text-align: center; margin-top: 0; color: #1a202c; }
+.research-balancer-wrapper p { text-align: center; color: #4a5568; margin-bottom: 25px; }
+.balancer-container { display: flex; flex-direction: column; gap: 20px; }
+
+/* Seesaw Animation Styles */
+.seesaw-visual-area {
+    background: #f7fafc;
+    border-radius: 8px;
+    padding: 30px 20px 20px 20px;
+    border: 1px dashed #cbd5e0;
+}
+.seesaw-stage {
+    position: relative;
+    width: 80%;
+    height: 80px;
+    margin: 0 auto 15px auto;
+}
+.seesaw-plank {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    height: 12px;
+    background: #dd6b20;
+    border-radius: 6px;
+    transform-origin: center bottom;
+    transition: transform 0.4s ease-out;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+.left-weight-label, .right-weight-label {
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(0,0,0,0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
+    position: relative;
+    top: -22px;
+}
+.seesaw-fulcrum {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 32px solid #4a5568;
+}
+
+/* Feedback Box Styling */
+.feedback-box {
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border-left: 5px solid transparent;
+}
+.state-balanced { background-color: #f0fff4; color: #22543d; border-color: #38a169; }
+.state-academic { background-color: #ebf8ff; color: #2b6cb0; border-color: #3182ce; }
+.state-practical { background-color: #fffaf0; color: #dd6b20; border-color: #dd6b20; }
+.state-danger { background-color: #fff5f5; color: #9b2c2c; border-color: #e53e3e; animation: pulse 1.5s infinite; }
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.01); }
+    100% { transform: scale(1); }
+}
+
+/* Form Inputs Grid layout */
+.balancer-divider { border: 0; border-top: 1px solid #e2e8f0; margin: 10px 0; }
+.sliders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media(max-width: 600px) { .sliders-grid { grid-template-columns: 1fr; } }
+
+.slider-group-box { background: #fff; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; }
+.slider-group-box h3 { margin-top: 0; margin-bottom: 12px; font-size: 15px; border-bottom: 2px solid; padding-bottom: 5px; }
+.literature-group h3 { color: #3182ce; border-color: #ebf8ff; }
+.practice-group h3 { color: #dd6b20; border-color: #fffaf0; }
+.researcher-group h3 { color: #4a5568; border-color: #edf2f7; }
+
+.slider-group-box label { display: block; font-size: 13px; margin-bottom: 12px; font-weight: 500; color: #4a5568; }
+.slider-group-box label span { font-weight: bold; float: right; color: #1a202c; }
+.slider-group-box input[type="range"] { width: 100%; margin-top: 5px; display: block; }
+.researcher-sliders { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+@media(max-width: 600px) { .researcher-sliders { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+function updateBalancer() {
+    // 1. Capture Values
+    const accRes = parseFloat(document.getElementById('slide-access-res').value);
+    const knowledge = parseFloat(document.getElementById('slide-knowledge').value);
+    const gap = parseFloat(document.getElementById('slide-gap').value);
+    
+    const problem = parseFloat(document.getElementById('slide-problem').value);
+    const data = parseFloat(document.getElementById('slide-data').value);
+    const needs = parseFloat(document.getElementById('slide-needs').value);
+    
+    const interest = parseFloat(document.getElementById('slide-interest').value);
+    const time = parseFloat(document.getElementById('slide-time').value);
+    const skills = parseFloat(document.getElementById('slide-skills').value);
+
+    // 2. Update Numerical Indicators next to labels
+    document.getElementById('val-access-res').innerText = accRes;
+    document.getElementById('val-knowledge').innerText = knowledge;
+    document.getElementById('val-gap').innerText = gap;
+    document.getElementById('val-problem').innerText = problem;
+    document.getElementById('val-data').innerText = data;
+    document.getElementById('val-needs').innerText = needs;
+    document.getElementById('val-interest').innerText = interest;
+    document.getElementById('val-time').innerText = time;
+    document.getElementById('val-skills').innerText = skills;
+
+    // 3. Compute Averages
+    const L = (accRes + knowledge + gap) / 3;
+    const P = (problem + data + needs) / 3;
+    const R = (interest + time + skills) / 3;
+
+    // 4. Visual Animation Setup (Calculate Tilt)
+    // The scale maxes out at a 16-degree tilt to keep things inside the container
+    let tiltAngle = (P - L) * 4; 
+    document.getElementById('seesaw-plank').style.transform = `rotate(${tiltAngle}deg)`;
+
+    // 5. Logic Processor & Feedback Output
+    const feedbackBox = document.getElementById('balancer-feedback');
+    
+    // Clear old state tracking classes
+    feedbackBox.className = "feedback-box";
+
+    if (R <= 2.5) {
+        feedbackBox.classList.add('state-danger');
+        feedbackBox.innerHTML = `<strong>⚠️ Status: Foundation Crumbling (Capacity Check)</strong><br>
+        Regardless of how balanced your topic is, your personal resources (Interest, Time, or Skills) are too low. Your project risks running aground. Consider redefining your scope or choosing a topic you have more bandwidth to execute.`;
+    } else if (Math.abs(L - P) <= 0.75) {
+        feedbackBox.classList.add('state-balanced');
+        feedbackBox.innerHTML = `<strong>✅ Status: Perfectly Balanced!</strong><br>
+        Excellent! Your topic bridges the gap wonderfully. You have the theoretical backing, clear access to resources, an observable practical problem, and the personal bandwidth to follow through. This is viable for a proposal.`;
+    } else if (L - P > 0.75) {
+        feedbackBox.classList.add('state-academic');
+        feedbackBox.innerHTML = `<strong>📘 Status: The Academic Vacuum (Too Left-Heavy)</strong><br>
+        Your topic is highly rigorous, but it lacks an anchor in real-world application. Who benefits from this outside of the university setting? Try to tie your chosen literature gap to an on-the-ground industry bottleneck, environmental stressor, or community need.`;
+    } else if (P - L > 0.75) {
+        feedbackBox.classList.add('state-practical');
+        feedbackBox.innerHTML = `<strong>📙 Status: The Speculative Venture (Too Right-Heavy)</strong><br>
+        You have flagged a fascinating, real-world issue! However, without deep access to data, methods, or existing theories, your research risks reading like a personal essay or an opinion piece. Dig deeper into the underlying academic literature to find a validated methodology.`;
+    }
+}
+
+// Initial kickoff upon page generation
+document.addEventListener("DOMContentLoaded", function() {
+    updateBalancer();
+});
+</script>
